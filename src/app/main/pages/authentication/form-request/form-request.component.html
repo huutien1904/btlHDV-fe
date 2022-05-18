@@ -1,0 +1,85 @@
+<form class="form form-horizontal" [formGroup]="formRequest">
+  <div class="row">
+    <div class="col-12">
+      <div class="col-6">
+        <div class="form-group row">
+          <div class="col-sm-3 col-form-label">
+            <label>Mã id telegram</label>
+          </div>
+          <div class="col-sm-9">
+            <input
+              type="text"
+              id="first-name"
+              class="form-control"
+              name="fname"
+              placeholder="Mã id telegram"
+              formControlName="idTelegram"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group row">
+          <div class="col-sm-3 col-form-label">
+            <label>Thành phố :</label>
+          </div>
+          <div class="col-sm-9">
+            <input
+              type="text"
+              id="email-id"
+              class="form-control"
+              name="email-id"
+              placeholder="Thành phố"
+              formControlName="cityName"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group row">
+          <div class="col-sm-3 col-form-label">
+            <label>Token bot Telegram</label>
+          </div>
+          <div class="col-sm-9">
+            <input
+              type="text"
+              id="contact-info"
+              class="form-control"
+              name="contact"
+              placeholder="token bot telegram"
+              formControlName="tokenBotTele"
+
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group row">
+          <div class="col-sm-3 col-form-label">
+            <label>Số ngày cần xem 1-7</label>
+          </div>
+          <div class="col-sm-9">
+            <input
+              type="text"
+              id="password"
+              class="form-control"
+              name="password"
+              placeholder="Password"
+              formControlName="numberDays"
+
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-9 offset-sm-3">
+      <button type="submit" rippleEffect class="btn btn-primary mr-1" (click) = "submitForm()">
+        Gửi thông tin
+      </button>
+      <button type="reset" rippleEffect class="btn btn-outline-secondary">
+        Reset
+      </button>
+    </div>
+  </div>
+</form>
