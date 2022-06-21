@@ -24,7 +24,7 @@ import { NotificationSendSuccesssComponent } from './notification-send-successs/
 // routing
 const routes: Routes = [
   {
-    path: 'authentication/login-v1',
+    path: 'authentication/login',
     component: AuthLoginV1Component
   },
   {
@@ -32,7 +32,7 @@ const routes: Routes = [
     component: AuthLoginV2Component
   },
   {
-    path: 'authentication/register-v1',
+    path: 'authentication/register',
     component: AuthRegisterV1Component
   },
   {

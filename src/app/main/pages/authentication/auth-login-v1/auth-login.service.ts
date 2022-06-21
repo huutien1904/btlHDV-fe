@@ -20,4 +20,10 @@ export class LoginService {
       `http://localhost:3000/register`,body
     );
   }
+
+  getAllUser (){
+    return this._httpClient.get<any>(
+      `http://localhost:3000/users`
+    );
+  }
 }

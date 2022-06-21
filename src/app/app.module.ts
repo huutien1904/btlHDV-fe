@@ -77,7 +77,7 @@ const appRoutes: Routes = [
   // },
   {
     path: '',
-    redirectTo: 'pages/authentication/login-v1',
+    redirectTo: 'pages/authentication/login',
     pathMatch: 'full'
   },
   {

@@ -5,6 +5,8 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 import { CoreConfigService } from '@core/services/config.service';
+import { Router } from '@angular/router';
+import { FormRequestService } from '../form-request.service';
 
 @Component({
   selector: 'app-auth-register-v1',
@@ -28,7 +30,12 @@ export class AuthRegisterV1Component implements OnInit {
    * @param {CoreConfigService} _coreConfigService
    * @param {FormBuilder} _formBuilder
    */
-  constructor(private _coreConfigService: CoreConfigService, private _formBuilder: FormBuilder) {
+  constructor(
+    private _coreConfigService: CoreConfigService, 
+    private _formBuilder: FormBuilder,
+    private router: Router,
+    private _formRequestService:FormRequestService
+    ) {
     this._unsubscribeAll = new Subject();
 
     // Configure the layout
@@ -71,6 +78,21 @@ export class AuthRegisterV1Component implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
+  }
+  dangKyTaiKhoan(){
+    console.log(this.registerForm.value)
+    const body = {
+      username: this.registerForm.controls['username'].value,
+      password:this.registerForm.controls['password'].value
+    }
+    console.log(JSON.stringify(body));
+    this._formRequestService.register(body).subscribe((value) => {
+      console.log(value);
+      if(value){
+        this.router.navigate(['/pages/authentication/login']);
+      }
+    })
+    // this.router.navigate(['/pages/authentication/login']);
   }
 
   // Lifecycle Hooks

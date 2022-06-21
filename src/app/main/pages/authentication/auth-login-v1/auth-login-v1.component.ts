@@ -6,6 +6,7 @@ import { Subject } from "rxjs";
 import { Router } from "@angular/router";
 import { CoreConfigService } from "@core/services/config.service";
 import { LoginService } from "./auth-login.service";
+import { FormRequestService } from "../form-request.service";
 
 @Component({
   selector: "app-auth-login-v1",
@@ -19,7 +20,7 @@ export class AuthLoginV1Component implements OnInit {
   public loginForm: FormGroup;
   public submitted = false;
   public passwordTextType: boolean;
-
+  
   // Private
   private _unsubscribeAll: Subject<any>;
 
@@ -33,7 +34,8 @@ export class AuthLoginV1Component implements OnInit {
     private _coreConfigService: CoreConfigService,
     private _formBuilder: FormBuilder,
     private router: Router,
-    private _loginService : LoginService
+    private _loginService : LoginService,
+    private _formRequestService : FormRequestService
   ) {
     this._unsubscribeAll = new Subject();
 
@@ -73,13 +75,15 @@ export class AuthLoginV1Component implements OnInit {
   onSubmit() {
     // this.router.navigate(['/pages/authentication/form-request'])
     this.submitted = true;
+    
     // // stop here if form is invalid
-    const test = {
-      "username": "tien19042003",
-      "password": "12345"  
-  }
+    this._formRequestService.login(this.loginForm.value).subscribe((res) => {
+      if(res){
+        this.router.navigate(['/pages/authentication/form-request']);
+      }
+    })
     if (!this.loginForm.invalid) {
-      this._loginService.login(JSON.stringify(this.loginForm.value)).subscribe((res) => console.log(res))
+      
       console.log(this.loginForm.value)
       return;
     }
@@ -103,6 +107,8 @@ export class AuthLoginV1Component implements OnInit {
       .subscribe((config) => {
         this.coreConfig = config;
       });
+      
+      // this._formRequestService.getAllUser().subscribe((res) => console.log(res))
   }
 
   /**

@@ -5,7 +5,7 @@
       <div class="card-body">
         
 
-        <form class="auth-login-form mt-2" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <form class="auth-login-form mt-2" [formGroup]="loginForm" >
           <div class="form-group">
             <label for="login-email" class="form-label">Tên tài khoản</label>
             <input
@@ -67,15 +67,15 @@
               <!-- <label class="custom-control-label" for="remember-me"> Remember Me </label> -->
             </div>
           </div>
-          <button class="btn btn-primary btn-block" tabindex="4" rippleEffect>Đăng nhập</button>
+          <button class="btn btn-primary btn-block" (click)="onSubmit()" tabindex="4" rippleEffect>Đăng nhập</button>
         </form>
 
-        <!-- <p class="text-center mt-2">
-          <span>New on our platform?</span>
-          <a routerLink="/pages/authentication/register-v1">
-            <span>&nbsp;Create an account</span>
+        <p class="text-center mt-2">
+          <span>Chưa có tài khoản</span>
+          <a routerLink="/pages/authentication/register">
+            <span>&nbsp;Tạo tài khoản</span>
           </a>
-        </p> -->
+        </p>
 
         
       </div>
