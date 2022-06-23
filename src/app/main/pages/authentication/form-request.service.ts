@@ -16,10 +16,10 @@ export class FormRequestService {
       `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=8e4352972abe8bd8c4f7617a5ad35876&lang=vi`
     );
   }
-  getDetailWeather(city, id): Observable<any> {
+  getDetailWeather(city, id,day): Observable<any> {
     console.log("check");
     return this._httpClient.get<any>(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${id}&units=metric&lang=vi`
+      `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${id}&units=metric&lang=vi&cnt=${day}`
     );
   }
 
