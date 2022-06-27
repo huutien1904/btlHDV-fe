@@ -64,9 +64,9 @@ public check = false;
           var tocDOGio = item.wind.speed
           dd+=index
           var today1 = dd + '/' + mm + '/' + yyyy;
-          infor+=`" \n "
-          Ngày ${today1} 
-          " \n "
+          infor+=`
+          Ngày ${today1}
+          
           Hiện tại trời đang ${item.weather[0].description} , 
 
           Nhiệt độ hiện tại đang là ${nhietDo} độ, 
@@ -79,7 +79,6 @@ public check = false;
         })
         infor+="Chúc bạn 1 ngày tốt lành"
         console.log(infor)
-        
         this._formR.sendInformationForTele(infor,this.formRequest.get('tokenBotTele').value).subscribe((res) =>
         {
           console.log(res)

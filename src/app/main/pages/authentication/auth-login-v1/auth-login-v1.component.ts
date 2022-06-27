@@ -79,6 +79,9 @@ export class AuthLoginV1Component implements OnInit {
     // // stop here if form is invalid
     this._formRequestService.login(this.loginForm.value).subscribe((res) => {
       if(res){
+        console.log("localstorate")
+        // localStorage.setItem('currentUser',this.loginForm.value);
+
         this.router.navigate(['/pages/authentication/form-request']);
       }
     })
@@ -100,6 +103,8 @@ export class AuthLoginV1Component implements OnInit {
       username: ["", [Validators.required]],
       password: ["", Validators.required],
     });
+    // localStorage.setItem('currentUser',"tien");
+
 
     // Subscribe to config changes
     this._coreConfigService.config
